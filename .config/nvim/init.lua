@@ -14,6 +14,7 @@ vim.o.ignorecase = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.api.nvim_set_keymap('i', '<C-Z>', '<C-O>u', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 -- Harpoon Options
 local harpoon = require("harpoon")
 
@@ -65,9 +66,9 @@ require'FTerm'.setup({
 })
 
 -- Example keybindings
-vim.keymap.set('n', '<leader>t', '<CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('n', '<leader>tt', '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
-vim.keymap.set('n', '<leader>x', '<CMD>require("FTerm").close()<CR>')
+vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 -- lsp settings
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
