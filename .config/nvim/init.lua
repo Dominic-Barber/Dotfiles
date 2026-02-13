@@ -65,9 +65,40 @@ require'FTerm'.setup({
     },
 })
 
--- Example keybindings
-vim.keymap.set('n', '<leader>tt', '<CMD>lua require("FTerm").toggle()<CR>')
-vim.keymap.set('t', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
+
+local fterm = require('FTerm')
+
+-- 1. Create the General Purpose Terminal
+local default_terminal = fterm:new({
+    ft = 'fterm_default',
+})
+
+-- 2. Create the LazyGit Terminal
+local lazygit_terminal = fterm:new({
+    ft = 'fterm_lazygit',
+    cmd = 'lazygit',
+})
+
+-- 3. Universal Close Function
+local function close_active_terminal()
+    local ft = vim.bo.filetype
+    if ft == 'fterm_default' then
+        default_terminal:toggle()
+    elseif ft == 'fterm_lazygit' then
+        lazygit_terminal:toggle()
+    end
+end
+
+-- Keybindings for Normal Mode (if you are focused on the window)
+vim.keymap.set('n', '<A-i>', close_active_terminal, { desc = 'Close active FTerm' })
+
+-- Keybindings for Terminal Mode (essential for closing while typing)
+vim.keymap.set('t', '<A-i>', close_active_terminal, { desc = 'Close active FTerm' })
+
+-- Your existing toggles
+vim.keymap.set('n', '<leader>tt', function() default_terminal:toggle() end)
+vim.keymap.set('n', '<leader>gg', function() lazygit_terminal:toggle() end)
+
 -- lsp settings
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
