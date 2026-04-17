@@ -212,3 +212,9 @@ require('undotree').setup({
 
 vim.keymap.set('n', '<leader>u', require('undotree').toggle, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+
+-- Duplicate visual selection down
+vim.keymap.set("v", "dd", "y'>p", { noremap = true, desc = "Duplicate selection down" })
+
+-- Duplicate visual selection up
+vim.keymap.set("v", "du", "y'<P", { noremap = true, desc = "Duplicate selection up" })
