@@ -1,0 +1,6 @@
+hl.on("hyprland.start", function()
+    hl.dispatch(hl.dsp.exec_cmd("systemctl --user start hyprpolkitagent"))
+    hl.dispatch(hl.dsp.exec_cmd("wl-paste --type text --watch cliphist store"))
+    hl.dispatch(hl.dsp.exec_cmd("wl-paste --type image --watch cliphist store"))
+    hl.dispatch(hl.dsp.exec_cmd("qs -c noctalia-shell"))
+end)
