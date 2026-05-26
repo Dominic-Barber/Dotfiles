@@ -22,6 +22,7 @@ alias gc="git commit -m"
 
 function fish_greeting
     fastfetch
+    # cbonsai -l -m "Welcome back, Dominic."
 end
 
 function config
