@@ -3,12 +3,13 @@ local terminal = "ghostty"
 local fileManager = "dolphin"
 
 -- Standard App Binds
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("~/.config/hypr/autoclick.sh"))
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + F", hl.dsp.window.float())
-
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float())
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("dolphin"))
 -- Noctalia IPC Binds
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call launcher toggle"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("qs -c noctalia-shell ipc call panel-toggle notifications"))
@@ -49,3 +50,22 @@ hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.resize({ x = 10, y = 0, rel
 hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.resize({ x = -10, y = 0, relative = true }))
 hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.resize({ x = 0, y = -10, relative = true }))
 hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.resize({ x = 0, y = 10, relative = true }))
+
+-- Volume Control
+-- Raise Volume (repeating = true allows it to trigger continuously when held down)
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%+"), { repeating = false })
+
+-- Lower Volume
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%-"), { repeating = false })
+
+-- Toggle Mute (no repeating flag needed)
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+
+
+-- Screenshoting
+-- Screenshot a region
+hl.bind(mainMod .. " + SHIFT + s", hl.dsp.exec_cmd("hyprshot -m region"))
+
+-- Screenshot the active window
+hl.bind(mainMod .. " + s", hl.dsp.exec_cmd("hyprshot -m window"))
+

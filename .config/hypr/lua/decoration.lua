@@ -18,3 +18,11 @@ hl.config({
 		layout = "dwindle",
 	},
 })
+
+hl.window_rule({
+    name = "dolphin_opacity",
+    match = { 
+        class = "^(org.kde.dolphin)$" 
+    },
+    opacity = "0.85 0.85" -- Active and inactive opacity
+})
