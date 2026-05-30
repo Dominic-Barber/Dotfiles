@@ -1,0 +1,16 @@
+[config]
+
+[templates]
+
+# User-defined templates
+# Add your custom templates below
+# Example:
+# [templates.myapp]
+# input_path = "~/.config/noctalia/templates/myapp.css"
+# output_path = "~/.config/myapp/theme.css"
+# post_hook = "myapp --reload-theme"
+
+[templates.openrgb]
+input_path = "/home/barberdj/.config/noctalia/templates/openrgb.sh"
+output_path = "/home/barberdj/.cache/noctalia/openrgb_colors.sh"
+post_hook = "/home/barberdj/.config/hypr/scripts/rgb_sync.sh"

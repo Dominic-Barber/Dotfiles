@@ -3,7 +3,7 @@ local terminal = "ghostty"
 local fileManager = "dolphin"
 
 -- Standard App Binds
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("~/.config/hypr/autoclick.sh"))
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("~/.config/hypr/scripts/autoclick.sh"))
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
