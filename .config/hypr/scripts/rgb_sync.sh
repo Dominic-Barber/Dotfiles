@@ -2,6 +2,14 @@
 
 source ~/.cache/noctalia/openrgb_colors.sh
 
+# Wait for the OpenRGB server to bind to its port and finish probing
+while ! bash -c "echo > /dev/tcp/127.0.0.1/6742" 2>/dev/null; do
+  sleep 1
+done
+# Give it a small buffer after the port binds to ensure devices are loaded
+sleep 1
+
+
 # Python function to max out saturation for static LEDs (still useful for the bash side)
 boost_color() {
   python3 -c "
@@ -24,7 +32,7 @@ pkill -f "rgb_fan_loop.py"
 openrgb \
   -d 0 -m direct -c "$TERTIARY" \
   -d 1 -z 0 -m direct -c "$TERTIARY" \
-  -d 2 -m direct -c "$SECONDARY"
+  -d 2 -m direct -c "$TERTIARY"
 
 # Launch the persistent Python daemon for the fast fan chase
-nohup python3 /path/to/rgb_fan_loop.py "$RGB_PRIMARY" "$RGB_TERTIARY" > /dev/null 2>&1 & disown
+nohup python3 /home/barberdj/.config/hypr/scripts/rgb_fan_loop.py "$RGB_PRIMARY" "$RGB_TERTIARY" > /dev/null 2>&1 & disown
