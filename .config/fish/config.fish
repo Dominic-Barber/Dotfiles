@@ -28,3 +28,7 @@ end
 function config
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $argv
 end
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/barberdj/.local/bin" $PATH

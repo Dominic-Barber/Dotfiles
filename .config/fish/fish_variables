@@ -4,3 +4,4 @@ SETUVAR --export EDITOR:nvim
 SETUVAR --export VISUAL:nvim
 SETUVAR __fish_initialized:4300
 SETUVAR fish_greeting:
+SETUVAR fish_user_paths:/home/barberdj/\x2elocal/bin

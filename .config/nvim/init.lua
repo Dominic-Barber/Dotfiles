@@ -223,3 +223,14 @@ vim.keymap.set("v", "du", "y'<P", { noremap = true, desc = "Duplicate selection 
 vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE", ctermbg = "NONE" })
 
+-- Hexview
+local function toggle_hexview()
+  if vim.bo.filetype == "hexview" then
+    vim.cmd("UnHex")
+  else
+    vim.cmd("Hex")
+  end
+end
+
+vim.keymap.set('n', '<leader>h', toggle_hexview, { desc = 'Toggle hexview.nvim' })
+
