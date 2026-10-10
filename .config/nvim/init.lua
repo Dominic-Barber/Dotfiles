@@ -100,6 +100,21 @@ vim.keymap.set('n', '<leader>tt', function() default_terminal:toggle() end)
 vim.keymap.set('n', '<leader>gg', function() lazygit_terminal:toggle() end)
 
 -- lsp settings
+
+-- Global Diagnostic Settings (Enables inline virtual text)
+vim.diagnostic.config({
+  virtual_text = true,     -- Shows error message inline next to the code
+  signs = true,            -- Shows error icons in the gutter
+  underline = true,        -- Underlines the problematic code
+  update_in_insert = false,-- Don't show errors while you are typing
+})
+
+-- Diagnostic Keymaps (Works globally, does not need an active LSP)
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = 'Show line diagnostics' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
+
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -232,5 +247,5 @@ local function toggle_hexview()
   end
 end
 
-vim.keymap.set('n', '<leader>h', toggle_hexview, { desc = 'Toggle hexview.nvim' })
+vim.keymap.set('n', '<leader>x', toggle_hexview, { desc = 'Toggle hexview.nvim' })
 
