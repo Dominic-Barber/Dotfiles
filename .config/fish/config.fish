@@ -32,3 +32,5 @@ end
 
 # Added by Antigravity CLI installer
 set -gx PATH "/home/barberdj/.local/bin" $PATH
+
+fish_add_path /home/barberdj/.spicetify

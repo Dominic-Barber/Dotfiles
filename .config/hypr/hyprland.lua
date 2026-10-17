@@ -6,3 +6,7 @@ require("lua.binds")
 require("lua.autostart")
 require("lua.animation");
 require("lua.decoration");
+
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()
