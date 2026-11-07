@@ -1,6 +1,7 @@
 -- Hyprland Lua Configuration
 -- Entry Point
 
+require("lua.env")
 require("lua.settings")
 require("lua.binds")
 require("lua.autostart")

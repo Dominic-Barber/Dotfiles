@@ -1,7 +1,20 @@
 hl.config({
+    input = {
+        touchpad = {
+            natural_scroll = true,
+        },
+    },
     xwayland = {
         force_zero_scaling = true
     }
+})
+
+-- Laptop panel (2880x1800 OLED)
+hl.monitor({
+    output = "eDP-1",
+    mode = "preferred",
+    position = "auto",
+    scale = 1.5,
 })
 
 hl.monitor({
