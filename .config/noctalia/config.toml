@@ -1,0 +1,73 @@
+# Noctalia v5 Configuration - Corrected Layout
+
+[shell]
+corner_radius_scale = 1.0
+panel_background_opacity = 0.93
+
+[theme]
+source = "wallpaper"
+dark_mode = true
+generation_method = "tonal-spot"
+
+[theme.templates.user.openrgb]
+enabled = true
+input_path = "/home/barberdj/.config/noctalia/templates/openrgb.sh"
+output_path = "/home/barberdj/.cache/noctalia/openrgb_colors.sh"
+post_hook = "/home/barberdj/.config/hypr/scripts/rgb_sync.sh"
+
+[bar.top]
+position = "top"
+background_opacity = 0.43
+margin_horizontal = 4
+margin_vertical = 4
+frame_radius = 12
+frame_thickness = 8
+
+# In v5, widget arrays go directly under the bar block using start/center/end
+start = ["launcher", "clock", "sysmon", "active_window", "media"]
+center = ["workspaces"]
+end = ["tray", "wallpaper", "notifications", "battery", "volume", "brightness", "control-center"]
+
+# Individual widget configuration blocks
+[widget.clock]
+format_horizontal = "HH:mm ddd, MMM dd"
+
+[widget.sysmon]
+show_cpu_temp = true
+show_gpu_temp = true
+show_memory_as_percent = true
+show_network_stats = true
+use_monospace_font = true
+
+[widget.media]
+show_artist_first = true
+show_progress_ring = true
+
+[launcher]
+position = "center"
+view_mode = "list"
+icon_mode = "tabler"
+overview_layer = true
+
+[dock]
+enabled = false
+position = "bottom"
+auto_hide = true
+layer = "overlay"
+
+[wallpaper]
+enabled = true
+directory = "/home/barberdj/Pictures/Wallpapers"
+fill_mode = "crop"
+change_mode = "random"
+random_interval_sec = 300
+set_on_all_monitors = true
+
+[notifications]
+enabled = true
+location = "top_right"
+background_opacity = 0.3
+
+[osd]
+enabled = true
+location = "top_right"
